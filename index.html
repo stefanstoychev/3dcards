@@ -20,9 +20,9 @@
 
 		<script type="module">
 
-			import * as THREE from '/build/three.module.js';
+			import * as THREE from '/3dcards/build/three.module.js';
 
-			import Stats from '/examples/jsm/libs/stats.module.js';
+			import Stats from '/3dcards/examples/jsm/libs/stats.module.js';
 
 			//import * as THREE from 'https://unpkg.com/three@0.124.0/build/three.js';
 
@@ -331,7 +331,7 @@
 			function loadFont() {
 
 				const loader = new THREE.FontLoader();
-				loader.load( 'fonts/' + fontName + '_' + fontWeight + '.typeface.json', function ( response ) {
+				loader.load( '/3dcards/fonts/' + fontName + '_' + fontWeight + '.typeface.json', function ( response ) {
 
 					font = response;
 
