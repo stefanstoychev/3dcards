@@ -38,7 +38,7 @@
 
 			let firstLetter = true;
 
-			let text = "Здравей \n.js",
+			let text = "Hello World",
 
 				bevelEnabled = true,
 
@@ -122,6 +122,18 @@
 				scene.background = new THREE.Color( 0x000000 );
 				scene.fog = new THREE.Fog( 0x000000, 250, 1400 );
 
+				// ground
+
+				const ground = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2000, 2000 ), new THREE.MeshPhongMaterial( { color: 0x999999, depthWrite: false } ) );
+				ground.rotation.x = - Math.PI / 2;
+				ground.receiveShadow = true;
+				scene.add( ground );
+
+				const grid = new THREE.GridHelper( 2000, 20, 0x000000, 0x000000 );
+				grid.material.opacity = 0.2;
+				grid.material.transparent = true;
+				scene.add( grid );
+
 				// LIGHTS
 
 				const dirLight = new THREE.DirectionalLight( 0xffffff, 0.125 );
@@ -132,6 +144,18 @@
 				pointLight.position.set( 0, 100, 90 );
 				scene.add( pointLight );
 
+				const hemiLight = new THREE.HemisphereLight( 0xffffff, 0x444444 );
+				hemiLight.position.set( 0, 200, 0 );
+				scene.add( hemiLight );
+
+				const directionalLight = new THREE.DirectionalLight( 0xffffff );
+				directionalLight.position.set( 0, 200, 100 );
+				directionalLight.castShadow = true;
+				directionalLight.shadow.camera.top = 180;
+				directionalLight.shadow.camera.bottom = - 100;
+				directionalLight.shadow.camera.left = - 120;
+				directionalLight.shadow.camera.right = 120;
+				scene.add( directionalLight );
 				// Get text from hash
 
 				const hash = document.location.hash.substr( 1 );
@@ -193,7 +217,7 @@
 				// STATS
 
 				stats = new Stats();
-				//container.appendChild( stats.dom );
+				container.appendChild( stats.dom );
 
 				// EVENTS
 
