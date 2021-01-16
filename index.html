@@ -116,8 +116,8 @@
         // SCENE
 
         scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x000000);
-        scene.fog = new THREE.Fog(0x000000, 250, 1400);
+        scene.background = new THREE.Color(0x999999);
+        scene.fog = new THREE.Fog(0x999999, 250, 1400);
 
         // ground
 
@@ -125,6 +125,7 @@
             color: 0x999999,
             depthWrite: false
         }));
+
         ground.rotation.x = -Math.PI / 2;
         ground.receiveShadow = true;
         scene.add(ground);
